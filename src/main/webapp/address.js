@@ -1,5 +1,5 @@
-var local = "http://localhost:8080/CA-2/api/address/all";
-var droplet = "https://localhost:8080/CA-2/api/address/all";
+var local = "http://localhost:8080/exam_prep1/api/address/all";
+var droplet = "https://aieou.dk/exam_prep1/api/address/all";
 
 fetch(local)
         .then(res => res.json())

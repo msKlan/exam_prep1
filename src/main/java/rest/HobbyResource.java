@@ -54,11 +54,11 @@ import utils.EMF_Creator;
             servers = {
                     @Server(
                             description = "For Local host testing",
-                            url = "http://localhost:8080/CA-2/"
+                            url = "http://localhost:8080/exam_prep1/"
                     ),
                     @Server(
                             description = "Server API",
-                            url = "http://vincentcph.dk/CA-2/"
+                            url = "https://aieou.dk/exam_prep1/"
                     )
                           
             }
