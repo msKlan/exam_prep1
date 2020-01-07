@@ -69,7 +69,7 @@ public class AddressResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
             "pu",
-            "jdbc:mysql://localhost:3307/CA2",
+            "jdbc:mysql://localhost:3307/exam_prep1",
             "dev",
             "ax2",
             EMF_Creator.Strategy.CREATE);
