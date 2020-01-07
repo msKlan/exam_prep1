@@ -7,7 +7,6 @@ package facades;
 
 import dto.AddressDTO;
 import entities.Address;
-import entities.CityInfo;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;

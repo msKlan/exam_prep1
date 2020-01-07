@@ -7,10 +7,10 @@ package dto_OUT;
 
 import dto.AddressDTO;
 import dto.HobbyDTO;
-import dto.PhoneDTO;
+
 import entities.Hobby;
 import entities.Person;
-import entities.Phone;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +25,6 @@ public class PersonDTO_OUT {
     private String lName;
     private String email;
     private AddressDTO_OUT address;
-    private List<PhoneDTO_OUT> phones = new ArrayList<>();
     private List<HobbyDTO_OUT> hobbies = new ArrayList<>();
 
     public PersonDTO_OUT() {
@@ -43,11 +42,7 @@ public class PersonDTO_OUT {
         this.address = new AddressDTO_OUT(person.getAddress());
         }
         
-        if(person.getPhones() != null){
-        for (Phone phone : person.getPhones()) {
-        this.phones.add(new PhoneDTO_OUT(phone));
-        }
-        }
+
         if(person.getHobbies() != null){
         for (Hobby hobby : person.getHobbies()) {
         this.hobbies.add(new HobbyDTO_OUT(hobby));
@@ -95,13 +90,9 @@ public class PersonDTO_OUT {
         this.address = address;
     }
 
-    public List<PhoneDTO_OUT> getPhones() {
-        return phones;
-    }
 
-    public void setPhones(List<PhoneDTO_OUT> phones) {
-        this.phones = phones;
-    }
+
+
 
     public List<HobbyDTO_OUT> getHobbies() {
         return hobbies;
@@ -119,7 +110,7 @@ public class PersonDTO_OUT {
         hash = 29 * hash + Objects.hashCode(this.lName);
         hash = 29 * hash + Objects.hashCode(this.email);
         hash = 29 * hash + Objects.hashCode(this.address);
-        hash = 29 * hash + Objects.hashCode(this.phones);
+
         hash = 29 * hash + Objects.hashCode(this.hobbies);
         return hash;
     }
@@ -151,9 +142,7 @@ public class PersonDTO_OUT {
         if (!Objects.equals(this.address, other.address)) {
             return false;
         }
-        if (!Objects.equals(this.phones, other.phones)) {
-            return false;
-        }
+
         if (!Objects.equals(this.hobbies, other.hobbies)) {
             return false;
         }

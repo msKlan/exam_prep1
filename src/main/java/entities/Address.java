@@ -37,8 +37,7 @@ public class Address implements Serializable {
     @OneToMany(mappedBy = "address")
     private List<Person> persons = new ArrayList<>();
     
-    @ManyToOne(cascade = {CascadeType.PERSIST})
-    private CityInfo cityInfo;
+//    @ManyToOne(cascade = {CascadeType.PERSIST})
 
     public Address() {
     }
@@ -59,13 +58,8 @@ public class Address implements Serializable {
         person.setAddress(this);
     }
 
-    public CityInfo getCityInfo() {
-        return cityInfo;
-    }
 
-    public void setCityInfo(CityInfo cityInfo) {
-        this.cityInfo = cityInfo;
-    }
+
     
 
     public String getStreet() {
@@ -99,7 +93,6 @@ public class Address implements Serializable {
         hash = 31 * hash + Objects.hashCode(this.street);
         hash = 31 * hash + Objects.hashCode(this.additionalInfo);
         hash = 31 * hash + Objects.hashCode(this.persons);
-        hash = 31 * hash + Objects.hashCode(this.cityInfo);
         return hash;
     }
 
@@ -127,9 +120,7 @@ public class Address implements Serializable {
         if (!Objects.equals(this.persons, other.persons)) {
             return false;
         }
-        if (!Objects.equals(this.cityInfo, other.cityInfo)) {
-            return false;
-        }
+
         return true;
     }
    

@@ -10,12 +10,12 @@ import dto.PersonsDTO;
 import dto_OUT.HobbyDTO_OUT;
 import dto_OUT.PersonDTO_OUT;
 import dto_OUT.PersonsDTO_OUT;
-import dto_OUT.PhoneDTO_OUT;
+
 import entities.Address;
-import entities.CityInfo;
+
 import entities.Hobby;
 import entities.Person;
-import entities.Phone;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -108,21 +108,13 @@ public class GeneralFacade {
         Person p = new Person(person.getfName(), person.getlName(), person.getEmail());
         System.out.println("Person P: " + p);
 
-        CityInfo c = new CityInfo(person.getAddress().getCityInfo().getZipCode(), person.getAddress().getCityInfo().getCity() );
-        System.out.println("City C: " + c.getCity() + c.getZipCode());
 
         Address a = new Address(person.getAddress().getStreet(), person.getAddress().getAdditionalInfo());
-        a.setCityInfo(c);
+
         System.out.println("Address A: " + a.getStreet() + a.getAdditionalInfo());
         a.setPerson(p);
 
-        for (PhoneDTO_OUT ph : person.getPhones()) {
-            String pNum = ph.getNumber();
-            String pDesc = ph.getDescription();
-            Phone phone = new Phone(pNum, pDesc);
-            System.out.println("Phone: " + phone);
-            p.setPhone(phone);
-        }
+
         for (HobbyDTO_OUT h : person.getHobbies()) {
             String name = h.getName();
             String pDesc = h.getDescription();

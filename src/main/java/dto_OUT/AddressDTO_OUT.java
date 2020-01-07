@@ -5,7 +5,7 @@
  */
 package dto_OUT;
 
-import dto.CityInfoDTO;
+
 import dto.PersonDTO;
 import entities.Address;
 import entities.Person;
@@ -23,7 +23,7 @@ public class AddressDTO_OUT {
     private int id;
     private String street;
     private String additionalInfo;
-    private CityInfoDTO cityInfo;
+
 
     public AddressDTO_OUT() {
     }
@@ -35,9 +35,7 @@ public class AddressDTO_OUT {
         this.street = address.getStreet();
         this.additionalInfo = address.getAdditionalInfo();
 
-        if (address.getCityInfo() != null) {
-            this.cityInfo = new CityInfoDTO(address.getCityInfo());
-        }
+
     }
 
     public int getId() {
@@ -64,13 +62,9 @@ public class AddressDTO_OUT {
         this.additionalInfo = additionalInfo;
     }
 
-    public CityInfoDTO getCityInfo() {
-        return cityInfo;
-    }
 
-    public void setCityInfo(CityInfoDTO cityInfo) {
-        this.cityInfo = cityInfo;
-    }
+
+
 
     @Override
     public int hashCode() {
@@ -78,7 +72,7 @@ public class AddressDTO_OUT {
         hash = 67 * hash + this.id;
         hash = 67 * hash + Objects.hashCode(this.street);
         hash = 67 * hash + Objects.hashCode(this.additionalInfo);
-        hash = 67 * hash + Objects.hashCode(this.cityInfo);
+
         return hash;
     }
 
@@ -103,9 +97,7 @@ public class AddressDTO_OUT {
         if (!Objects.equals(this.additionalInfo, other.additionalInfo)) {
             return false;
         }
-        if (!Objects.equals(this.cityInfo, other.cityInfo)) {
-            return false;
-        }
+
         return true;
     }
     

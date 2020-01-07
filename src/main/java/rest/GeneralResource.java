@@ -6,10 +6,10 @@ import dto.PersonDTO;
 import dto_OUT.PersonDTO_OUT;
 import dto.PersonsDTO;
 import entities.Address;
-import entities.CityInfo;
+
 import entities.Hobby;
 import entities.Person;
-import entities.Phone;
+
 import facades.GeneralFacade;
 import utils.EMF_Creator;
 import facades.PersonFacade;

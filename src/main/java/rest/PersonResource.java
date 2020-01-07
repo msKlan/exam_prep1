@@ -5,10 +5,10 @@ import com.google.gson.GsonBuilder;
 import dto.PersonDTO;
 import dto.PersonsDTO;
 import entities.Address;
-import entities.CityInfo;
+
 import entities.Hobby;
 import entities.Person;
-import entities.Phone;
+
 import utils.EMF_Creator;
 import facades.PersonFacade;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -75,11 +75,11 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSetup() {
         EntityManager em = EMF.createEntityManager();
-        CityInfo c1 = new CityInfo("5700","Svendborg");
+
         Address a1 = new Address("Gottersgade 10", "st. tv.");
-        a1.setCityInfo(c1);
+
         
-        Phone ph1 = new Phone("80808080", "Private");
+
         Hobby h1 = new Hobby("Football", "Sport");
         
         Person p1 = new Person("Hans", "Hansen", "hans@hansen.com");
@@ -89,13 +89,13 @@ public class PersonResource {
         
         p1.setAddress(a1);
         
-        p1.setPhone(ph1);
+
         
-        CityInfo c2 = new CityInfo("2300","Kbh");
+
         Address a2 = new Address("Øresundsvej 1", "4. th.");
-        a2.setCityInfo(c2);
+
         
-        Phone ph2 = new Phone("66666666", "Work");
+
         
         Person p2 = new Person("Jens", "Jensen", "jens@jensen.com");
        
@@ -104,13 +104,13 @@ public class PersonResource {
         
         p2.setAddress(a2);
         
-        p2.setPhone(ph2);
+
         
-        CityInfo c3 = new CityInfo("2800","Lyngby");
+
         Address a3 = new Address("Lyngbyvej 10", "1 . tv.");
-        a3.setCityInfo(c3);
+
         
-        Phone ph3 = new Phone("12345678", "Private");
+
         Hobby h3 = new Hobby("Coins", "Collection");
         
         Person p3 = new Person("Simon", "Snow", "simon@snow.com");
@@ -120,7 +120,7 @@ public class PersonResource {
         
         p3.setAddress(a3);
         
-        p3.setPhone(ph3);
+
         
         try {
             em.getTransaction().begin();

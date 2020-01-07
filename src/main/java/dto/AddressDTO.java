@@ -6,7 +6,7 @@
 package dto;
 
 import entities.Address;
-import entities.CityInfo;
+
 import entities.Person;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class AddressDTO {
     private String street;
     private String additionalInfo;
     private List<PersonDTO> persons = new ArrayList();
-    private CityInfoDTO cityInfo;
+
 
     public AddressDTO(Address address) {
         if (address.getId() != null) {
@@ -37,9 +37,7 @@ public class AddressDTO {
                 this.persons.add(new PersonDTO(person));
             }
         
-        if (address.getCityInfo() != null) {
-            this.cityInfo = new CityInfoDTO(address.getCityInfo());
-        }
+
 
     }
 
@@ -63,9 +61,7 @@ public class AddressDTO {
         return persons;
     }
 
-    public CityInfoDTO getCityInfo() {
-        return cityInfo;
-    }
+
 
     public void setId(int id) {
         this.id = id;
@@ -83,9 +79,7 @@ public class AddressDTO {
         this.persons = persons;
     }
 
-    public void setCityInfo(CityInfoDTO cityInfo) {
-        this.cityInfo = cityInfo;
-    }
+
 
     @Override
     public int hashCode() {
@@ -94,7 +88,7 @@ public class AddressDTO {
         hash = 67 * hash + Objects.hashCode(this.street);
         hash = 67 * hash + Objects.hashCode(this.additionalInfo);
         hash = 67 * hash + Objects.hashCode(this.persons);
-        hash = 67 * hash + Objects.hashCode(this.cityInfo);
+
         return hash;
     }
 
@@ -122,9 +116,7 @@ public class AddressDTO {
         if (!Objects.equals(this.persons, other.persons)) {
             return false;
         }
-        if (!Objects.equals(this.cityInfo, other.cityInfo)) {
-            return false;
-        }
+
         return true;
     }
 

@@ -33,8 +33,7 @@ public class Person implements Serializable {
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Hobby> hobbies = new ArrayList<>();
     
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
-    private List<Phone> phones = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
     
     
     public Person() {
@@ -88,14 +87,8 @@ public class Person implements Serializable {
         this.hobbies.add(hobby);
     }
 
-    public List<Phone> getPhones() {
-        return phones;
-    }
+  
 
-    public void setPhone(Phone phone) {
-        this.phones.add(phone);
-        phone.setPerson(this);
-    }
     
     public Integer getId() {
         return id;
@@ -135,9 +128,7 @@ public class Person implements Serializable {
         if (!Objects.equals(this.hobbies, other.hobbies)) {
             return false;
         }
-        if (!Objects.equals(this.phones, other.phones)) {
-            return false;
-        }
+
         return true;
     }
     
