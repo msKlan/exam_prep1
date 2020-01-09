@@ -37,10 +37,10 @@ public class AddressFacadeTest {
 
     @BeforeAll
     public static void setUpClassV2() {
-        // emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,
-        // Strategy.DROP_AND_CREATE);
-        emf = EMF_Creator.createEntityManagerFactory("pu", "jdbc:mysql://localhost3307/exam_prep1_test", "dev", "ax2",
-                EMF_Creator.Strategy.DROP_AND_CREATE);
+         emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,
+         Strategy.DROP_AND_CREATE);
+ //       emf = EMF_Creator.createEntityManagerFactory("pu", "jdbc:mysql://localhost3307/exam_prep1_test", "dev", "ax2",
+  //              EMF_Creator.Strategy.DROP_AND_CREATE);
         facade = AddressFacade.getAddressFacade(emf);
     }
 
