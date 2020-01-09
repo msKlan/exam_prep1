@@ -24,7 +24,7 @@ import utils.EMF_Creator.Strategy;
  *
  * @author Renz
  */
-//@Disabled
+// @Disabled
 public class AddressFacadeTest {
 
     private static EntityManagerFactory emf;
@@ -37,7 +37,10 @@ public class AddressFacadeTest {
 
     @BeforeAll
     public static void setUpClassV2() {
-        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.DROP_AND_CREATE);
+        // emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,
+        // Strategy.DROP_AND_CREATE);
+        emf = EMF_Creator.createEntityManagerFactory("pu", "jdbc:mysql://localhost3307/exam_prep1_test", "dev", "ax2",
+                EMF_Creator.Strategy.DROP_AND_CREATE);
         facade = AddressFacade.getAddressFacade(emf);
     }
 
@@ -65,15 +68,15 @@ public class AddressFacadeTest {
     @AfterEach
     public void tearDown() {
     }
-    
-    
+
     @Test
     public void testgetAddressByID() {
         g1 = new AddressDTO(a1);
-        
+
         assertEquals(g1, facade.getAddress(a1.getId()));
 
     }
+
     @Test
     public void testAddAddress() {
         EntityManager em = emf.createEntityManager();
@@ -85,15 +88,14 @@ public class AddressFacadeTest {
 
         assertEquals(exp, actual);
     }
-    
-     @Test
+
+    @Test
     public void testgetAllAddresses() {
 
         assertEquals(2, facade.getAllAddress().getAll().size());
     }
-    
-    
-     @Test
+
+    @Test
     public void testRemoveAddress() {
 
         facade.removeAddress(a1.getId());
@@ -101,7 +103,7 @@ public class AddressFacadeTest {
         int actual = facade.getAllAddress().getAll().size();
         assertEquals(exp, actual);
     }
-    
+
     @Test
     public void testEditHobby() {
         EntityManager em = emf.createEntityManager();
@@ -114,5 +116,5 @@ public class AddressFacadeTest {
 
         assertEquals(exp, actual);
     }
-    
+
 }

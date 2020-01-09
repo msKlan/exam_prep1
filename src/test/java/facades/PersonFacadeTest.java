@@ -27,25 +27,30 @@ public class PersonFacadeTest {
     public PersonFacadeTest() {
     }
 
-    /*   **** HINT **** 
-        A better way to handle configuration values, compared to the UNUSED example above, is to store those values
-        ONE COMMON place accessible from anywhere.
-        The file config.properties and the corresponding helper class utils.Settings is added just to do that. 
-        See below for how to use these files. This is our RECOMENDED strategy
+    /*
+     * **** HINT **** A better way to handle configuration values, compared to the
+     * UNUSED example above, is to store those values ONE COMMON place accessible
+     * from anywhere. The file config.properties and the corresponding helper class
+     * utils.Settings is added just to do that. See below for how to use these
+     * files. This is our RECOMENDED strategy
      */
     @BeforeAll
     public static void setUpClassV2() {
-        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.DROP_AND_CREATE);
+        // emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,
+        // Strategy.DROP_AND_CREATE);
+        emf = EMF_Creator.createEntityManagerFactory("pu", "jdbc:mysql://localhost3307/exam_prep1_test", "dev", "ax2",
+                EMF_Creator.Strategy.DROP_AND_CREATE);
         facade = PersonFacade.getPersonFacade(emf);
     }
 
     @AfterAll
     public static void tearDownClass() {
-//        Clean up database after test is done or use a persistence unit with drop-and-create to start up clean on every test
+        // Clean up database after test is done or use a persistence unit with
+        // drop-and-create to start up clean on every test
     }
 
     // Setup the DataBase in a known state BEFORE EACH TEST
-    //TODO -- Make sure to change the script below to use YOUR OWN entity class
+    // TODO -- Make sure to change the script below to use YOUR OWN entity class
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
@@ -65,7 +70,7 @@ public class PersonFacadeTest {
 
     @AfterEach
     public void tearDown() {
-//        Remove any data after each test was run
+        // Remove any data after each test was run
     }
 
     @Test
@@ -74,7 +79,6 @@ public class PersonFacadeTest {
         assertEquals(exp, facade.getPerson(p1.getId()));
 
     }
-
 
     @Test
     public void testgetAllPersons() {
@@ -89,13 +93,13 @@ public class PersonFacadeTest {
         EntityManager em = emf.createEntityManager();
         p3 = new Person("Lars", "Larsen", "lars@larsen.com");
         p3DTO = new PersonDTO(p3);
-        
+
         PersonDTO exp = facade.addPerson(p3DTO);
-        
-        PersonDTO actual = new PersonDTO(em.find(Person.class,exp.getId()));
+
+        PersonDTO actual = new PersonDTO(em.find(Person.class, exp.getId()));
         assertEquals(exp, actual);
     }
-    
+
     @Test
     public void testDeletePerson() {
         int exp = facade.getAllPersons().getAll().size();
@@ -111,8 +115,8 @@ public class PersonFacadeTest {
         PersonDTO pDTO = new PersonDTO(p1);
         PersonDTO exp = facade.editPerson(pDTO);
         PersonDTO actual = new PersonDTO(em.find(Person.class, p1.getId()));
-        
+
         assertEquals(exp, actual);
     }
-    
+
 }
