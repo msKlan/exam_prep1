@@ -40,60 +40,35 @@ import utils.EMF_Creator;
  * @author jacobfolkehildebrandt
  */
 
-@OpenAPIDefinition(
-            info = @Info(
-                    title = "Simple Hobby API",
-                    version = "0.4",
-                    description = "Simple API to get info about hobbies.",        
-                    contact = @Contact( name = "Jacob Hildebrandt", email = "@cphbusiness.dk")
-            ),
-          tags = {
-                    @Tag(name = "Hobby", description = "API related to Hobby")
-              
-            },
-            servers = {
-                    @Server(
-                            description = "For Local host testing",
-                            url = "http://localhost:8080/exam_prep1/"
-                    ),
-                    @Server(
-                            description = "Server API",
-                            url = "https://aieou.dk/exam_prep1/"
-                    )
-                          
-            }
-    )
+@OpenAPIDefinition(info = @Info(title = "Simple Hobby API", version = "0.4", description = "Simple API to get info about hobbies.", contact = @Contact(name = "Jacob Hildebrandt", email = "@cphbusiness.dk")), tags = {
+        @Tag(name = "Hobby", description = "API related to Hobby")
+
+}, servers = { @Server(description = "For Local host testing", url = "http://localhost:8080/exam_prep1/"),
+        @Server(description = "Server API", url = "https://aieou.dk/exam_prep1/")
+
+})
 
 @Path("hobby")
 public class HobbyResource {
-    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
-            "pu",
-            "jdbc:mysql://localhost:3307/exam_prep1",
-            "dev",
-            "ax2",
+    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV,
             EMF_Creator.Strategy.CREATE);
     private static final HobbyFacade FACADE = HobbyFacade.getHobbyFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-         @Operation(summary = "Shows Hello World",
-            tags = {"Hobby"},
-            responses = {
-                     @ApiResponse(
-                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = HobbyDTO.class))),
-                    @ApiResponse(responseCode = "200", description = "The Requested Path"),                       
-                    @ApiResponse(responseCode = "400", description = "Path not found")})
+    @Operation(summary = "Shows Hello World", tags = { "Hobby" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = HobbyDTO.class))),
+            @ApiResponse(responseCode = "200", description = "The Requested Path"),
+            @ApiResponse(responseCode = "400", description = "Path not found") })
     @GET
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
-     @Operation(summary = "Get Hobby by ID",
-            tags = {"Hobby"},
-            responses = {
-                     @ApiResponse(
-                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = HobbyDTO.class))),
-                    @ApiResponse(responseCode = "200", description = "The Requested Hobby"),                       
-                    @ApiResponse(responseCode = "400", description = "Hobby not found")})
+
+    @Operation(summary = "Get Hobby by ID", tags = { "Hobby" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = HobbyDTO.class))),
+            @ApiResponse(responseCode = "200", description = "The Requested Hobby"),
+            @ApiResponse(responseCode = "400", description = "Hobby not found") })
     @GET
     @Path("id/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -101,48 +76,39 @@ public class HobbyResource {
         HobbyDTO hobby = FACADE.getHobby(id);
         return hobby;
     }
-    
-         @Operation(summary = "Get All Hobbies",
-            tags = {"Hobby"},
-            responses = {
-                     @ApiResponse(
-                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = HobbiesDTO.class))),
-                    @ApiResponse(responseCode = "200", description = "A list of all Hobbies"),                       
-                    @ApiResponse(responseCode = "400", description = "????")})
+
+    @Operation(summary = "Get All Hobbies", tags = { "Hobby" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = HobbiesDTO.class))),
+            @ApiResponse(responseCode = "200", description = "A list of all Hobbies"),
+            @ApiResponse(responseCode = "400", description = "????") })
     @GET
     @Path("all")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     public List<HobbyDTO> getAllHobbies() {
-        return FACADE.getAllHobbies().getAll(); 
+        return FACADE.getAllHobbies().getAll();
     }
-    
-         @Operation(summary = "Add a Hobby",
-            tags = {"Hobby"},
-            responses = {
-                     @ApiResponse(
-                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = HobbyDTO.class))),
-                    @ApiResponse(responseCode = "200", description = "The added Hobby"),                       
-                    @ApiResponse(responseCode = "400", description = "Invalid input")})
+
+    @Operation(summary = "Add a Hobby", tags = { "Hobby" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = HobbyDTO.class))),
+            @ApiResponse(responseCode = "200", description = "The added Hobby"),
+            @ApiResponse(responseCode = "400", description = "Invalid input") })
     @POST
     @Path("add")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     public HobbyDTO addHobby(String hobby) {
         Hobby h = GSON.fromJson(hobby, Hobby.class);
         HobbyDTO hobbyDTO = new HobbyDTO(h);
         FACADE.addHubby(hobbyDTO);
         return hobbyDTO;
     }
-    
-         @Operation(summary = "Edit a Hobby",
-            tags = {"Hobby"},
-            responses = {
-                     @ApiResponse(
-                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = HobbyDTO.class))),
-                    @ApiResponse(responseCode = "200", description = "The edited Hobby"),                       
-                    @ApiResponse(responseCode = "400", description = "Hobby not found")})
+
+    @Operation(summary = "Edit a Hobby", tags = { "Hobby" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = HobbyDTO.class))),
+            @ApiResponse(responseCode = "200", description = "The edited Hobby"),
+            @ApiResponse(responseCode = "400", description = "Hobby not found") })
     @PUT
     @Path("edit")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     @Consumes(MediaType.APPLICATION_JSON)
     public HobbyDTO editHobby(String hobby) {
         Hobby h = GSON.fromJson(hobby, Hobby.class);
@@ -150,17 +116,14 @@ public class HobbyResource {
         FACADE.editHobby(hobbyDTO);
         return hobbyDTO;
     }
-    
-         @Operation(summary = "Remove/Delete a Hobby",
-            tags = {"Hobby"},
-            responses = {
-                     @ApiResponse(
-                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = HobbyDTO.class))),
-                    @ApiResponse(responseCode = "200", description = "The Removed Hobby"),                       
-                    @ApiResponse(responseCode = "400", description = "Hobby not found")})
+
+    @Operation(summary = "Remove/Delete a Hobby", tags = { "Hobby" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = HobbyDTO.class))),
+            @ApiResponse(responseCode = "200", description = "The Removed Hobby"),
+            @ApiResponse(responseCode = "400", description = "Hobby not found") })
     @DELETE
     @Path("delete/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     @Consumes(MediaType.APPLICATION_JSON)
     public HobbyDTO removeHobby(@PathParam("id") int id) {
         return FACADE.removeHobby(id);

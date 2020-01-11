@@ -41,11 +41,7 @@ import javax.ws.rs.core.Response;
 @Path("general")
 public class GeneralResource {
 
-    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
-            "pu",
-            "jdbc:mysql://localhost:3307/exam_prep1",
-            "dev",
-            "ax2",
+    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV,
             EMF_Creator.Strategy.CREATE);
     private static final GeneralFacade FACADE = GeneralFacade.getGeneralFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -70,20 +66,20 @@ public class GeneralResource {
     public List<PersonDTO_OUT> getAllPersonByPhone(@PathParam("phoneNumber") String phoneNumber) {
         return FACADE.getAllPersonsByPhone(phoneNumber).getAll();
     }
-    
+
     @GET
     @Path("/all/zipcode")
     @Produces(MediaType.APPLICATION_JSON)
     public List<String> getAllZipCodes() {
         return FACADE.getAllZipCodes();
     }
- 
+
     @GET
     @Path("/count/{hobbyname}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCount(@PathParam("hobbyname") String hobbyname) {
         long count = FACADE.getCountPersonByHobby(hobbyname);
-        
+
         return Response.ok().entity(GSON.toJson(count)).build();
     }
 }

@@ -40,56 +40,32 @@ import utils.EMF_Creator;
  *
  * @author Renz
  */
-@OpenAPIDefinition(
-        info = @Info(
-                title = "Simple address API",
-                version = "0.4",
-                description = "Simple API to get info about Addresses.",
-                contact = @Contact(name = "Renz Oliver de Chavez", email = "cph@cphbusiness.dk")
-        ),
-        tags = {
-            @Tag(name = "address", description = "API related to addresses")
+@OpenAPIDefinition(info = @Info(title = "Simple address API", version = "0.4", description = "Simple API to get info about Addresses.", contact = @Contact(name = "Renz Oliver de Chavez", email = "cph@cphbusiness.dk")), tags = {
+        @Tag(name = "address", description = "API related to addresses")
 
-        },
-        servers = {
-            @Server(
-                    description = "For Local host testing",
-                    url = "http://localhost:8080/exam_prep1/"
-            ),
-            @Server(
-                    description = "Server API",
-                    url = "https://aieou.dk/exam_prep1/"
-            )
+}, servers = { @Server(description = "For Local host testing", url = "http://localhost:8080/exam_prep1/"),
+        @Server(description = "Server API", url = "https://aieou.dk/exam_prep1/")
 
-        }
-)
+})
 
 @Path("address")
 public class AddressResource {
 
-    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
-            "pu",
-            "jdbc:mysql://localhost:3307/exam_prep1",
-            "dev",
-            "ax2",
+    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.DEV,
             EMF_Creator.Strategy.CREATE);
     private static final AddressFacade FACADE = AddressFacade.getAddressFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
 
-    @Operation(summary = "Get address based on ID",
-            tags = {"address"},
-            responses = {
-                @ApiResponse(
-                        content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class))),
-                @ApiResponse(responseCode = "200", description = "The Requested addressByID"),
-                @ApiResponse(responseCode = "400", description = "Address by ID not found")}
-    )
+    @Operation(summary = "Get address based on ID", tags = { "address" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class))),
+            @ApiResponse(responseCode = "200", description = "The Requested addressByID"),
+            @ApiResponse(responseCode = "400", description = "Address by ID not found") })
     @GET
     @Path("id/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -98,29 +74,23 @@ public class AddressResource {
         return Response.ok().entity(GSON.toJson(address)).build();
     }
 
-    @Operation(summary = "Get all addresses info",
-            tags = {"address"},
-            responses = {
-                @ApiResponse(
-                        content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class))),
-                @ApiResponse(responseCode = "200", description = "The Requested address"),
-                @ApiResponse(responseCode = "400", description = "Address not found")}
-    )
+    @Operation(summary = "Get all addresses info", tags = { "address" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class))),
+            @ApiResponse(responseCode = "200", description = "The Requested address"),
+            @ApiResponse(responseCode = "400", description = "Address not found") })
     @GET
     @Path("all")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     public List<AddressDTO> getAllAddress() {
         return FACADE.getAllAddress().getAll();
     }
 
     @POST
     @Path("add")
-    @Produces({MediaType.APPLICATION_JSON})
-    @Operation(summary = "add Address", tags = {"address"},
-            responses = {
-                @ApiResponse(responseCode = "200", description = "The Newly created address"),
-                @ApiResponse(responseCode = "400", description = "Not all arguments provided with the body")
-            })
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Operation(summary = "add Address", tags = { "address" }, responses = {
+            @ApiResponse(responseCode = "200", description = "The Newly created address"),
+            @ApiResponse(responseCode = "400", description = "Not all arguments provided with the body") })
     public AddressDTO addAddress(String address) {
         Address ad = GSON.fromJson(address, Address.class);
         AddressDTO addressDTO = new AddressDTO(ad);
@@ -130,17 +100,14 @@ public class AddressResource {
         FACADE.addAddress(addressDTO);
         return addressDTO;
     }
-@Operation(summary = "Edit address",
-            tags = {"address"},
-            responses = {
-                @ApiResponse(
-                        content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class))),
-                @ApiResponse(responseCode = "200", description = "The Requested address"),
-                @ApiResponse(responseCode = "400", description = "Address not found")}
-    )
+
+    @Operation(summary = "Edit address", tags = { "address" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class))),
+            @ApiResponse(responseCode = "200", description = "The Requested address"),
+            @ApiResponse(responseCode = "400", description = "Address not found") })
     @PUT
     @Path("edit")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     @Consumes(MediaType.APPLICATION_JSON)
     public AddressDTO editAddress(String address) {
         Address ad = GSON.fromJson(address, Address.class);
@@ -149,17 +116,13 @@ public class AddressResource {
         return addressDTO;
     }
 
-    @Operation(summary = "Delete Address by ID",
-            tags = {"address"},
-            responses = {
-                @ApiResponse(
-                        content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class))),
-                @ApiResponse(responseCode = "200", description = "The Resquested address"),
-                @ApiResponse(responseCode = "400", description = "id not found")}
-    )
+    @Operation(summary = "Delete Address by ID", tags = { "address" }, responses = {
+            @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = Address.class))),
+            @ApiResponse(responseCode = "200", description = "The Resquested address"),
+            @ApiResponse(responseCode = "400", description = "id not found") })
     @DELETE
     @Path("delete")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     @Consumes(MediaType.APPLICATION_JSON)
     public AddressDTO removeAddress(int id) {
         AddressDTO ad = FACADE.getAddress(id);
