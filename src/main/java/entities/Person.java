@@ -26,6 +26,7 @@ public class Person implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
+    private String phone;
     
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Address address;
@@ -39,10 +40,11 @@ public class Person implements Serializable {
     public Person() {
     }
 
-    public Person(String firstName, String lastName, String email) {
+    public Person(String firstName, String lastName, String email, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.phone = phone;
     }
 
     public String getFirstName() {
@@ -67,6 +69,14 @@ public class Person implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Address getAddress() {

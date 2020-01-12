@@ -105,7 +105,7 @@ public class GeneralFacade {
 
     public PersonDTO_OUT addPerson(PersonDTO_OUT person) {
         EntityManager em = emf.createEntityManager();
-        Person p = new Person(person.getfName(), person.getlName(), person.getEmail());
+        Person p = new Person(person.getfName(), person.getlName(), person.getEmail(), person.getPhone());
         System.out.println("Person P: " + p);
 
 

@@ -26,6 +26,7 @@ public class PersonDTO {
     private String fName;
     private String lName;
     private String email;
+    private String phone;
 
     public PersonDTO(Person person) {
         if (person.getId() != null) {
@@ -34,6 +35,7 @@ public class PersonDTO {
         this.fName = person.getFirstName();
         this.lName = person.getLastName();
         this.email = person.getEmail();
+        this.phone = person.getPhone();
     }
 
     public int getId() {
@@ -68,6 +70,14 @@ public class PersonDTO {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -90,6 +100,9 @@ public class PersonDTO {
             return false;
         }
         if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.phone, other.phone)) {
             return false;
         }
         return true;

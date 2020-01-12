@@ -65,8 +65,8 @@ public class PersonResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        p1 = new Person("Hans", "Hansen", "hans@hansen.com");
-        p2 = new Person("Bo", "Boesen", "bo@boesen.com");
+        p1 = new Person("Hans", "Hansen", "hans@hansen.com","11111111");
+        p2 = new Person("Bo", "Boesen", "bo@boesen.com","22222222");
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Person.deleteAllRows").executeUpdate();

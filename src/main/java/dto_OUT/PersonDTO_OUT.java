@@ -24,6 +24,7 @@ public class PersonDTO_OUT {
     private String fName;
     private String lName;
     private String email;
+    private String phone;
     private AddressDTO_OUT address;
     private List<HobbyDTO_OUT> hobbies = new ArrayList<>();
 
@@ -37,6 +38,7 @@ public class PersonDTO_OUT {
         this.fName = person.getFirstName();
         this.lName = person.getLastName();
         this.email = person.getEmail();
+        this.email = person.getPhone();
         
         if(person.getAddress() != null){
         this.address = new AddressDTO_OUT(person.getAddress());
@@ -82,6 +84,14 @@ public class PersonDTO_OUT {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public AddressDTO_OUT getAddress() {
         return address;
     }
@@ -89,10 +99,6 @@ public class PersonDTO_OUT {
     public void setAddress(AddressDTO_OUT address) {
         this.address = address;
     }
-
-
-
-
 
     public List<HobbyDTO_OUT> getHobbies() {
         return hobbies;
@@ -109,6 +115,7 @@ public class PersonDTO_OUT {
         hash = 29 * hash + Objects.hashCode(this.fName);
         hash = 29 * hash + Objects.hashCode(this.lName);
         hash = 29 * hash + Objects.hashCode(this.email);
+        hash = 29 * hash + Objects.hashCode(this.phone);
         hash = 29 * hash + Objects.hashCode(this.address);
 
         hash = 29 * hash + Objects.hashCode(this.hobbies);
@@ -137,6 +144,9 @@ public class PersonDTO_OUT {
             return false;
         }
         if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.phone, other.phone)) {
             return false;
         }
         if (!Objects.equals(this.address, other.address)) {

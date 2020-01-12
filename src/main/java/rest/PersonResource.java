@@ -58,14 +58,14 @@ public class PersonResource {
 
         Address a1 = new Address("Gottersgade 10", "st. tv.");
         Hobby h1 = new Hobby("Football", "Sport");
-        Person p1 = new Person("Hans", "Hansen", "hans@hansen.com");
+        Person p1 = new Person("Hans", "Hansen", "hans@hansen.com","11111111");
 
         h1.setPerson(p1);
         p1.setHobby(h1);
         p1.setAddress(a1);
 
         Address a2 = new Address("Øresundsvej 1", "4. th.");
-        Person p2 = new Person("Jens", "Jensen", "jens@jensen.com");
+        Person p2 = new Person("Jens", "Jensen", "jens@jensen.com","22222222");
 
         h1.setPerson(p2);
         p2.setHobby(h1);
@@ -73,7 +73,7 @@ public class PersonResource {
 
         Address a3 = new Address("Lyngbyvej 10", "1 . tv.");
         Hobby h3 = new Hobby("Coins", "Collection");
-        Person p3 = new Person("Simon", "Snow", "simon@snow.com");
+        Person p3 = new Person("Simon", "Snow", "simon@snow.com","33333333");
 
         h3.setPerson(p3);
         p3.setHobby(h3);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cors;
 
 import java.io.IOException;
@@ -13,10 +8,7 @@ import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-/**
- *
- * @author Klan
- */
+//Comment out these two annotations below to disable CORS-handling
 @Provider  //This will ensure that the filter is used "automatically"
 @PreMatching
 public class CorsRequestFilter implements ContainerRequestFilter {
@@ -25,7 +17,7 @@ public class CorsRequestFilter implements ContainerRequestFilter {
   public void filter(ContainerRequestContext requestCtx) throws IOException {
     // When HttpMethod comes as OPTIONS, just acknowledge that it accepts...
     if (requestCtx.getRequest().getMethod().equals("OPTIONS")) {
-      log.info("HTTP Method (OPTIONS) - Detected!");
+      // log.info("HTTP Method (OPTIONS) - Detected!");
       // Just send a OK response back to the browser.
       // The response goes through the chain of applicable response filters.
       requestCtx.abortWith(Response.status(Response.Status.OK).build());

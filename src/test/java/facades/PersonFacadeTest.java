@@ -54,8 +54,8 @@ public class PersonFacadeTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        p1 = new Person("Hans", "Hansen", "hans@hansen.com");
-        p2 = new Person("Bo", "Boesen", "bo@boesen.com");
+        p1 = new Person("Hans", "Hansen", "hans@hansen.com","11111111");
+        p2 = new Person("Bo", "Boesen", "bo@boesen.com","22222222");
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Person.deleteAllRows").executeUpdate();
@@ -91,7 +91,7 @@ public class PersonFacadeTest {
     @Test
     public void testAddPerson() {
         EntityManager em = emf.createEntityManager();
-        p3 = new Person("Lars", "Larsen", "lars@larsen.com");
+        p3 = new Person("Lars", "Larsen", "lars@larsen.com","33333333");
         p3DTO = new PersonDTO(p3);
 
         PersonDTO exp = facade.addPerson(p3DTO);

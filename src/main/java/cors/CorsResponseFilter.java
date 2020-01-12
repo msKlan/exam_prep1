@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cors;
 
 import java.io.IOException;
@@ -13,10 +8,7 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.ext.Provider;
 
-/**
- *
- * @author Klan
- */
+//Comment out the two annotations below to disable CORS-handling
 @Provider
 @PreMatching
 public class CorsResponseFilter implements ContainerResponseFilter {
@@ -24,10 +16,10 @@ public class CorsResponseFilter implements ContainerResponseFilter {
   @Override
   public void filter( ContainerRequestContext requestCtx, ContainerResponseContext res )
     throws IOException {
-    LOG.info( "Executing REST response filter" );
+    // LOG.info( "Executing REST response filter" );
     res.getHeaders().add("Access-Control-Allow-Origin", "*" );
     res.getHeaders().add("Access-Control-Allow-Credentials", "true" );
     res.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT" );
-    res.getHeaders().add("Access-Control-Allow-Headers", "Origin, Accept, Content-Type");
+    res.getHeaders().add("Access-Control-Allow-Headers", "Origin, Accept, Content-Type, Authorization,x-access-token");
   }
 }

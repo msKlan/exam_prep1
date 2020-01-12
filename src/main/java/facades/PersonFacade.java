@@ -61,7 +61,7 @@ public class PersonFacade {
 
     public PersonDTO addPerson(PersonDTO person) {
         EntityManager em = emf.createEntityManager();
-        Person p = new Person(person.getfName(), person.getlName(), person.getEmail());
+        Person p = new Person(person.getfName(), person.getlName(), person.getEmail(), person.getPhone());
         try {
             em.getTransaction().begin();
             em.persist(p);
@@ -87,7 +87,7 @@ public class PersonFacade {
 
     public PersonDTO editPerson(PersonDTO p) {
         EntityManager em = emf.createEntityManager();
-        Person person = new Person(p.getfName(),p.getlName(),p.getEmail());
+        Person person = new Person(p.getfName(),p.getlName(),p.getEmail(),p.getPhone());
         person.setId(p.getId());
         try {
             em.getTransaction().begin();
