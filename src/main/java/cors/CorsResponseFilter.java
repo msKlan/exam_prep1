@@ -15,7 +15,7 @@ import javax.ws.rs.ext.Provider;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 @Provider
 @PreMatching

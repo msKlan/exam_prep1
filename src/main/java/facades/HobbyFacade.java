@@ -9,7 +9,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author jacobfolkehildebrandt
+ * @author Klan
  */
 public class HobbyFacade {
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 public class PersonsDTO_OUT {
         List<PersonDTO_OUT> all = new ArrayList();

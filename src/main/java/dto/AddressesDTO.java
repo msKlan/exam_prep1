@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Renz
+ * @author Klan
  */
 public class AddressesDTO {
 

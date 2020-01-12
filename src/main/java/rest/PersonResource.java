@@ -57,34 +57,26 @@ public class PersonResource {
         EntityManager em = EMF.createEntityManager();
 
         Address a1 = new Address("Gottersgade 10", "st. tv.");
-
         Hobby h1 = new Hobby("Football", "Sport");
-
         Person p1 = new Person("Hans", "Hansen", "hans@hansen.com");
 
         h1.setPerson(p1);
         p1.setHobby(h1);
-
         p1.setAddress(a1);
 
         Address a2 = new Address("Øresundsvej 1", "4. th.");
-
         Person p2 = new Person("Jens", "Jensen", "jens@jensen.com");
 
         h1.setPerson(p2);
         p2.setHobby(h1);
-
         p2.setAddress(a2);
 
         Address a3 = new Address("Lyngbyvej 10", "1 . tv.");
-
         Hobby h3 = new Hobby("Coins", "Collection");
-
         Person p3 = new Person("Simon", "Snow", "simon@snow.com");
 
         h3.setPerson(p3);
         p3.setHobby(h3);
-
         p3.setAddress(a3);
 
         try {

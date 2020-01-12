@@ -17,7 +17,7 @@ import java.util.Objects;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 public class PersonDTO_OUT {
     private int id;

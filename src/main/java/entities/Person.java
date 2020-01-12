@@ -44,8 +44,6 @@ public class Person implements Serializable {
         this.lastName = lastName;
         this.email = email;
     }
-    
-    
 
     public String getFirstName() {
         return firstName;
@@ -87,9 +85,6 @@ public class Person implements Serializable {
         this.hobbies.add(hobby);
     }
 
-  
-
-    
     public Integer getId() {
         return id;
     }

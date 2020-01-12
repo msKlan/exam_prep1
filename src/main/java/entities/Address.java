@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 @Entity
 @NamedQuery(name = "Address.deleteAllRows", query = "DELETE from Address")

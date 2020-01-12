@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  *
- * @author jacobfolkehildebrandt
+ * @author Klan
  */
 public class HobbiesDTO {
      @Schema(example="[\"1\",\"Coins\",\"Collection\"]")

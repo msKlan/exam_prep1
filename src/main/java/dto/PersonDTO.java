@@ -16,25 +16,12 @@ import java.util.Objects;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 @Schema(name = "PersonInfo")
 
 public class PersonDTO {
 
-//    private int id;
-//    @Schema(required = true, example = "Hans")
-//    private String fName;
-//    @Schema(required = true, example = "Hansen")
-//    private String lName;
-//    @Schema(required = true, example = "hans@hansen.com")
-//    private String email;
-//    @Schema(example = "[\"Street 10\",\"Apartment\"]")
-//    private Address address;
-//    @Schema(example = "[\"80808080\",\"Private\"]")
-//    private List<Phone> phones;
-//     @Schema(example="[\"Football\",\"Sport\"]")
-//    private List<Hobby> hobbies;
     private int id;
     private String fName;
     private String lName;

@@ -37,7 +37,7 @@ import utils.EMF_Creator;
 
 /**
  *
- * @author jacobfolkehildebrandt
+ * @author Klan
  */
 
 @OpenAPIDefinition(info = @Info(title = "Simple Hobby API", version = "0.4", description = "Simple API to get info about hobbies.", contact = @Contact(name = "Jacob Hildebrandt", email = "@cphbusiness.dk")), tags = {

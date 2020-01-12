@@ -15,7 +15,7 @@ import java.util.Objects;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 public class HobbyDTO_OUT {
     private Integer id;

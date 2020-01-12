@@ -15,7 +15,7 @@ import javax.ws.rs.ext.Provider;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 @Provider  //This will ensure that the filter is used "automatically"
 @PreMatching

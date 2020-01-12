@@ -38,7 +38,7 @@ import utils.EMF_Creator;
 
 /**
  *
- * @author Renz
+ * @author Klan
  */
 @OpenAPIDefinition(info = @Info(title = "Simple address API", version = "0.4", description = "Simple API to get info about Addresses.", contact = @Contact(name = "Renz Oliver de Chavez", email = "cph@cphbusiness.dk")), tags = {
         @Tag(name = "address", description = "API related to addresses")

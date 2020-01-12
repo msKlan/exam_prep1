@@ -18,7 +18,7 @@ import javax.persistence.NamedQuery;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 @Entity
 @NamedQuery(name = "Hobby.deleteAllRows", query = "DELETE from Hobby")

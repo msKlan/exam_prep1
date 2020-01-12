@@ -15,7 +15,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Renz
+ * @author Klan
  */
 public class AddressDTO {
 

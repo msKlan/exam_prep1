@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 public class HobbiesDTO_OUT {
     List<HobbyDTO_OUT> all = new ArrayList<>();

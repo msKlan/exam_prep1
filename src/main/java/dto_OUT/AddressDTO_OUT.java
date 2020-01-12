@@ -16,7 +16,7 @@ import java.util.Objects;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 public class AddressDTO_OUT {
 
@@ -34,8 +34,6 @@ public class AddressDTO_OUT {
         }
         this.street = address.getStreet();
         this.additionalInfo = address.getAdditionalInfo();
-
-
     }
 
     public int getId() {
@@ -61,10 +59,6 @@ public class AddressDTO_OUT {
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
     }
-
-
-
-
 
     @Override
     public int hashCode() {

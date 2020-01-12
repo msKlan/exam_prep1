@@ -25,7 +25,7 @@ import utils.EMF_Creator;
 
 /**
  *
- * @author vince
+ * @author Klan
  */
 public class GeneralFacade {
 
@@ -134,13 +134,13 @@ public class GeneralFacade {
     }
 
     public static void main(String[] args) {
-        EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
-                "pu",
-                "jdbc:mysql://localhost:3307/exam_prep1",
-                "dev",
-                "ax2",
-                EMF_Creator.Strategy.CREATE);
-        GeneralFacade af = getGeneralFacade(EMF);
+        // EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
+        //         "pu",
+        //         "jdbc:mysql://localhost:3307/exam_prep1",
+        //         "dev",
+        //         "ax2",
+        //         EMF_Creator.Strategy.CREATE);
+        // GeneralFacade af = getGeneralFacade(EMF);
       //  System.out.println(af.getCountPersonByHobby("Football"));
 //        System.out.println(af.getAllPersonsByPhone("80808080"));
 //
