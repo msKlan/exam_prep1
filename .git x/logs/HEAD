@@ -1,0 +1,15 @@
+0000000000000000000000000000000000000000 c9943bd974856de3c07b445ddb06b8fb9c9090bb Klan <michaelsanderklan@gmail.com> 1577488858 +0100	commit (initial): first commit
+c9943bd974856de3c07b445ddb06b8fb9c9090bb faf288720d887f5e8075d8e8afcde334a2b81e17 Klan <michaelsanderklan@gmail.com> 1577627348 +0100	commit: changed to aieou.dk and renamed CA2 to exam_prep1
+faf288720d887f5e8075d8e8afcde334a2b81e17 ceb380a1815b0a931de7c261e5f62237a579dfb4 Klan <michaelsanderklan@gmail.com> 1578423201 +0100	commit: everything is working and almost everything is done, still needs frontend
+ceb380a1815b0a931de7c261e5f62237a579dfb4 a7b3f9ec4dc8415166f61315f92c6ff9ffb6ad5d Klan <michaelsanderklan@gmail.com> 1578425678 +0100	commit: everything is working and almost everything is done, still needs frontend
+a7b3f9ec4dc8415166f61315f92c6ff9ffb6ad5d 631d8723254ad5993deb452f6cb17e946756763b Klan <michaelsanderklan@gmail.com> 1578426849 +0100	commit: everything is working and almost everything is done, still needs frontend
+631d8723254ad5993deb452f6cb17e946756763b e5b012bd8da3bd2af1ea77e99b0d0225c6670bc8 Klan <michaelsanderklan@gmail.com> 1578428772 +0100	commit: database errors, needs fixing
+e5b012bd8da3bd2af1ea77e99b0d0225c6670bc8 06f27c1739f2c08919369577d22d0203f2467512 Klan <michaelsanderklan@gmail.com> 1578595767 +0100	commit: possible fix
+06f27c1739f2c08919369577d22d0203f2467512 731a70bebd1bf4abbe4ed8ff2607c71989e9e147 Klan <michaelsanderklan@gmail.com> 1578597571 +0100	commit: possible fix
+731a70bebd1bf4abbe4ed8ff2607c71989e9e147 ca1e9678abadf84d20d032045ca944ca2243280d Klan <michaelsanderklan@gmail.com> 1578599189 +0100	commit: possible fix
+ca1e9678abadf84d20d032045ca944ca2243280d 5adc97d8830c5e3c1b717ef6afd2168d1db7e41b Klan <michaelsanderklan@gmail.com> 1578600776 +0100	commit: possible fix
+5adc97d8830c5e3c1b717ef6afd2168d1db7e41b a1594921d3141d78b4f36da7399b107d8b8b2981 Klan <michaelsanderklan@gmail.com> 1578752023 +0100	commit: fingers crossed
+a1594921d3141d78b4f36da7399b107d8b8b2981 48b5b300e8614779e5a3268c4666dfe1389106fc Klan <michaelsanderklan@gmail.com> 1578861428 +0100	commit: aecsrdtjfyng
+48b5b300e8614779e5a3268c4666dfe1389106fc f39cf6542c00580eda975a137fd8a042e981f5db Klan <michaelsanderklan@gmail.com> 1578861737 +0100	commit: aecsrdtjfyng
+f39cf6542c00580eda975a137fd8a042e981f5db d73e22da233d8b941558cad60b1468dd411d69a2 Klan <michaelsanderklan@gmail.com> 1578862141 +0100	commit: aecsrdtjfyng
+d73e22da233d8b941558cad60b1468dd411d69a2 ba340423d02a284779f3185233e5e39d3adacf28 Klan <michaelsanderklan@gmail.com> 1579033220 +0100	commit: added age, fixed HUGE netbeans IDE problem

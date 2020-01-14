@@ -41,12 +41,12 @@ public class PersonResourceTest {
 
     @BeforeAll
     public static void setUpClass() {
-        //This method must be called before you request the EntityManagerFactory
+        // This method must be called before you request the EntityManagerFactory
         EMF_Creator.startREST_TestWithDB();
         emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.CREATE);
 
         httpServer = startServer();
-        //Setup RestAssured
+        // Setup RestAssured
         RestAssured.baseURI = SERVER_URL;
         RestAssured.port = SERVER_PORT;
         RestAssured.defaultParser = Parser.JSON;
@@ -54,19 +54,21 @@ public class PersonResourceTest {
 
     @AfterAll
     public static void closeTestServer() {
-        //System.in.read();
-        //Don't forget this, if you called its counterpart in @BeforeAll
+        // System.in.read();
+        // Don't forget this, if you called its counterpart in @BeforeAll
         EMF_Creator.endREST_TestWithDB();
         httpServer.shutdownNow();
     }
 
-    // Setup the DataBase (used by the test-server and this test) in a known state BEFORE EACH TEST
-    //TODO -- Make sure to change the EntityClass used below to use YOUR OWN (renamed) Entity class
+    // Setup the DataBase (used by the test-server and this test) in a known state
+    // BEFORE EACH TEST
+    // TODO -- Make sure to change the EntityClass used below to use YOUR OWN
+    // (renamed) Entity class
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        p1 = new Person("Hans", "Hansen", "hans@hansen.com","11111111");
-        p2 = new Person("Bo", "Boesen", "bo@boesen.com","22222222");
+        p1 = new Person("Hans", "Hansen", "hans@hansen.com", "11111111", "47");
+        p2 = new Person("Bo", "Boesen", "bo@boesen.com", "22222222", "7");
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Person.deleteAllRows").executeUpdate();
@@ -86,22 +88,14 @@ public class PersonResourceTest {
 
     @Test
     public void testGetPersonID() throws Exception {
-        given()
-                .contentType("application/json")
-                .get("/person/id/" + p1.getId()).then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("id", equalTo(p1.getId()));
+        given().contentType("application/json").get("/person/id/" + p1.getId()).then().assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode()).body("id", equalTo(p1.getId()));
     }
-    
+
     @Test
     public void testGetAllPersons() throws Exception {
-        given()
-                .contentType("application/json")
-                .get("/person/all").then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("size()", equalTo(2));
+        given().contentType("application/json").get("/person/all").then().assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode()).body("size()", equalTo(2));
     }
 
 }

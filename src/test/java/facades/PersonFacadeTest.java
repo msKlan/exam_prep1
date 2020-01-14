@@ -36,10 +36,10 @@ public class PersonFacadeTest {
      */
     @BeforeAll
     public static void setUpClassV2() {
-         emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,
-         Strategy.DROP_AND_CREATE);
- //       emf = EMF_Creator.createEntityManagerFactory("pu", "jdbc:mysql://localhost3307/exam_prep1_test", "dev", "ax2",
-  //              EMF_Creator.Strategy.DROP_AND_CREATE);
+        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.DROP_AND_CREATE);
+        // emf = EMF_Creator.createEntityManagerFactory("pu",
+        // "jdbc:mysql://localhost3307/exam_prep1_test", "dev", "ax2",
+        // EMF_Creator.Strategy.DROP_AND_CREATE);
         facade = PersonFacade.getPersonFacade(emf);
     }
 
@@ -54,8 +54,8 @@ public class PersonFacadeTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        p1 = new Person("Hans", "Hansen", "hans@hansen.com","11111111");
-        p2 = new Person("Bo", "Boesen", "bo@boesen.com","22222222");
+        p1 = new Person("Hans", "Hansen", "hans@hansen.com", "11111111", "47");
+        p2 = new Person("Bo", "Boesen", "bo@boesen.com", "22222222", "7");
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Person.deleteAllRows").executeUpdate();
@@ -91,7 +91,7 @@ public class PersonFacadeTest {
     @Test
     public void testAddPerson() {
         EntityManager em = emf.createEntityManager();
-        p3 = new Person("Lars", "Larsen", "lars@larsen.com","33333333");
+        p3 = new Person("Lars", "Larsen", "lars@larsen.com", "33333333", "157");
         p3DTO = new PersonDTO(p3);
 
         PersonDTO exp = facade.addPerson(p3DTO);

@@ -25,6 +25,7 @@ public class PersonDTO_OUT {
     private String lName;
     private String email;
     private String phone;
+    private String age;
     private AddressDTO_OUT address;
     private List<HobbyDTO_OUT> hobbies = new ArrayList<>();
 
@@ -38,17 +39,17 @@ public class PersonDTO_OUT {
         this.fName = person.getFirstName();
         this.lName = person.getLastName();
         this.email = person.getEmail();
-        this.email = person.getPhone();
-        
-        if(person.getAddress() != null){
-        this.address = new AddressDTO_OUT(person.getAddress());
-        }
-        
+        this.phone = person.getPhone();
+        this.age = person.getAge();
 
-        if(person.getHobbies() != null){
-        for (Hobby hobby : person.getHobbies()) {
-        this.hobbies.add(new HobbyDTO_OUT(hobby));
+        if (person.getAddress() != null) {
+            this.address = new AddressDTO_OUT(person.getAddress());
         }
+
+        if (person.getHobbies() != null) {
+            for (Hobby hobby : person.getHobbies()) {
+                this.hobbies.add(new HobbyDTO_OUT(hobby));
+            }
         }
     }
 
@@ -98,6 +99,14 @@ public class PersonDTO_OUT {
 
     public void setAddress(AddressDTO_OUT address) {
         this.address = address;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public List<HobbyDTO_OUT> getHobbies() {
@@ -158,6 +167,5 @@ public class PersonDTO_OUT {
         }
         return true;
     }
-    
-    
+
 }

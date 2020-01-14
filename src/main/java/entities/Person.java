@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-
 @Entity
 @NamedQuery(name = "Person.deleteAllRows", query = "DELETE from Person")
 public class Person implements Serializable {
@@ -27,24 +26,25 @@ public class Person implements Serializable {
     private String lastName;
     private String email;
     private String phone;
-    
+    private String age;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Address address;
-    
+
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Hobby> hobbies = new ArrayList<>();
-    
-//    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
-    
-    
+
+    // @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
+
     public Person() {
     }
 
-    public Person(String firstName, String lastName, String email, String phone) {
+    public Person(String firstName, String lastName, String email, String phone, String age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+        this.age = age;
     }
 
     public String getFirstName() {
@@ -95,13 +95,21 @@ public class Person implements Serializable {
         this.hobbies.add(hobby);
     }
 
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    } 
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -136,7 +144,5 @@ public class Person implements Serializable {
 
         return true;
     }
-    
-    
 
 }

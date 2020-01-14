@@ -18,7 +18,7 @@ public class PersonFacade {
     private static PersonFacade instance;
     private static EntityManagerFactory emf;
 
-    //Private Constructor to ensure Singleton
+    // Private Constructor to ensure Singleton
     private PersonFacade() {
     }
 
@@ -61,7 +61,8 @@ public class PersonFacade {
 
     public PersonDTO addPerson(PersonDTO person) {
         EntityManager em = emf.createEntityManager();
-        Person p = new Person(person.getfName(), person.getlName(), person.getEmail(), person.getPhone());
+        Person p = new Person(person.getfName(), person.getlName(), person.getEmail(), person.getPhone(),
+                person.getAge());
         try {
             em.getTransaction().begin();
             em.persist(p);
@@ -87,7 +88,7 @@ public class PersonFacade {
 
     public PersonDTO editPerson(PersonDTO p) {
         EntityManager em = emf.createEntityManager();
-        Person person = new Person(p.getfName(),p.getlName(),p.getEmail(),p.getPhone());
+        Person person = new Person(p.getfName(), p.getlName(), p.getEmail(), p.getPhone(), p.getAge());
         person.setId(p.getId());
         try {
             em.getTransaction().begin();

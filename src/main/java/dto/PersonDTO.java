@@ -27,6 +27,7 @@ public class PersonDTO {
     private String lName;
     private String email;
     private String phone;
+    private String age;
 
     public PersonDTO(Person person) {
         if (person.getId() != null) {
@@ -36,6 +37,7 @@ public class PersonDTO {
         this.lName = person.getLastName();
         this.email = person.getEmail();
         this.phone = person.getPhone();
+        this.age = person.getAge();
     }
 
     public int getId() {
@@ -76,6 +78,14 @@ public class PersonDTO {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     @Override
